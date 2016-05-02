@@ -11,22 +11,24 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Ronak on 4/22/16.
+ * Created by Ronak on 4/22/16. Webdriver Instance to navigate to ebay, search for a term and extract search results into a text file. 
+ 
  */
 public class extractSearchTerm {
 
-File f = new File("/Users/Ronak/Desktop/Work/Ornait/OrnaitAutomation/SearchResult.txt");
+File f = new File("/Users/Ronak/Desktop/Work/Study/SearchResult.txt");
 
     @Test
 
     public void SearchTerm(){
-
+//go to ebay and search for "elephand handicraft"
         WebDriver driver=new FirefoxDriver();
         driver.get("http://www.ebay.com");
         WebElement searchTxtBox = driver.findElement(By.xpath(".//*[@id='gh-ac']"));
         searchTxtBox.sendKeys("elephant handicraft");
         driver.findElement(By.xpath(".//*[@id='gh-btn']")).click();
 
+//find the results and extract it into SearchResult.txt file 
 
     List <WebElement> totalLinks=driver.findElements(By.xpath(".//*[@id='Results']"));
         FileWriter w = null;
